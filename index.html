@@ -9,63 +9,107 @@
 
 <body>
 
-    <div class="scoreboard">
+<div class="scoreboard">
 
-        <h1>🏏 Cricket Scoring System</h1>
+    <h1>🏏 Cricket Scoring System</h1>
 
-        <div class="score">
-            <h2>Team A</h2>
-            <div id="teamScore">0 / 0</div>
-            <p>Overs: <span id="overs">0.0</span></p>
-        </div>
+    <div class="score">
+        <h2>Team A</h2>
 
-        <div class="players">
+        <div id="teamScore">0 / 0</div>
 
-            <div class="player">
-                <h3>Rahul ⭐</h3>
-                <p>
-                    Runs: <span id="batsmanRuns">0</span>
-                    (<span id="balls">0</span>)
-                </p>
-                <p>4s: <span id="fours">0</span> |
-                   6s: <span id="sixes">0</span>
-                </p>
-            </div>
+        <p>Overs: <span id="overs">0.0</span></p>
+    </div>
 
-            <div class="player">
-                <h3>Amit</h3>
-                <p>Runs: 0 (0)</p>
-                <p>4s: 0 | 6s: 0</p>
-            </div>
 
-        </div>
+    <!-- Batsmen -->
 
-        <div class="bowler">
-            <h3>Bowler: Raj</h3>
+    <div class="players">
+
+        <div class="player">
+            <h3 id="batsman1Name">Rahul</h3>
+
             <p>
-                Overs: <span id="bowlerOvers">0.0</span> |
-                Runs: <span id="bowlerRuns">0</span> |
-                Wickets: <span id="bowlerWickets">0</span>
+                Runs: <span id="batsman1Runs">0</span>
+                (<span id="batsman1Balls">0</span>)
+            </p>
+
+            <p>
+                4s: <span id="batsman1Fours">0</span> |
+                6s: <span id="batsman1Sixes">0</span>
             </p>
         </div>
 
-        <h2>Enter Ball Result</h2>
 
-        <div class="buttons">
-            <button onclick="addRuns(0)">0</button>
-            <button onclick="addRuns(1)">1</button>
-            <button onclick="addRuns(2)">2</button>
-            <button onclick="addRuns(3)">3</button>
-            <button onclick="addRuns(4)">4</button>
-            <button onclick="addRuns(6)">6</button>
-            <button onclick="wicket()">W</button>
+        <div class="player">
+            <h3 id="batsman2Name">Amit</h3>
+
+            <p>
+                Runs: <span id="batsman2Runs">0</span>
+                (<span id="batsman2Balls">0</span>)
+            </p>
+
+            <p>
+                4s: <span id="batsman2Fours">0</span> |
+                6s: <span id="batsman2Sixes">0</span>
+            </p>
         </div>
-
-        <button class="reset" onclick="resetScore()">Reset Match</button>
 
     </div>
 
-    <script src="script.js"></script>
+
+    <!-- Current striker -->
+
+    <div class="striker">
+
+        <h3>
+            ⭐ Striker:
+            <span id="strikerName">Rahul</span>
+        </h3>
+
+    </div>
+
+
+    <!-- Bowler -->
+
+    <div class="bowler">
+
+        <h3>Bowler: Raj</h3>
+
+        <p>
+            Overs: <span id="bowlerOvers">0.0</span> |
+            Runs: <span id="bowlerRuns">0</span> |
+            Wickets: <span id="bowlerWickets">0</span>
+        </p>
+
+    </div>
+
+
+    <!-- Ball buttons -->
+
+    <h2>Enter Ball Result</h2>
+
+    <div class="buttons">
+
+        <button onclick="addRuns(0)">0</button>
+        <button onclick="addRuns(1)">1</button>
+        <button onclick="addRuns(2)">2</button>
+        <button onclick="addRuns(3)">3</button>
+        <button onclick="addRuns(4)">4</button>
+        <button onclick="addRuns(6)">6</button>
+
+        <button onclick="wicket()">W</button>
+
+    </div>
+
+
+    <button class="reset" onclick="resetScore()">
+        Reset Match
+    </button>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>

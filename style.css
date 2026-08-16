@@ -34,7 +34,7 @@ h1 {
 .players {
     display: flex;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: 2px;
 }
 
 .player {
@@ -69,4 +69,12 @@ button {
 .reset {
     margin-top: 20px;
     width: 100%;
+}
+
+
+.striker {
+    margin-top: 20px;
+    padding: 10px;
+    background: #ddd;
+    border-radius: 10px;
 }
