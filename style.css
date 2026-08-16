@@ -78,3 +78,11 @@ button {
     background: #ddd;
     border-radius: 10px;
 }
+
+.buttons button {
+    background-color: #ece5e5;
+}
+
+.buttons button:hover{
+    transform: scale(1.05);
+}

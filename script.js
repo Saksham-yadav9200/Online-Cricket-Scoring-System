@@ -254,6 +254,35 @@ function resetScore() {
 
     striker = 0;
 
+    function wide() {
+        totalRuns++;
+        bowlerRuns++;       //Wide is not a legal ball then add a run in total runs
+    
+    }
+
+    function NoBall() {
+        totalRuns++;
+        bowlerRuns++;       // no ball is not legal ball than add runs in total runs and bowler runs 
+    }
+
+    function Bye(){
+        legalBalls++;           //bye is a legal ball 
+        totalRuns++;
+
+        if(legalBalls % 6 == 0 ) {      //if over is completed than change the strike 
+            changeStrike();
+        }
+    }
+
+    function legBye(){
+        legalBalls++;
+        totalRuns++;
+
+        if (legalBalls % 6 == 0){
+            changeStrike();
+        }
+    }
+
 
     updateScoreboard();
 }
