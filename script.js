@@ -30,6 +30,10 @@ let batsman2 = {
 // 1 = Amit
 
 let striker = 0;
+let batsman1Out = false;
+let batsman2Out = false;
+
+let waitingForNewBatsman = false;
 
 
 // Add runs
@@ -111,10 +115,14 @@ function changeStrike() {
     }
 }
 
-
-// Wicket
-
+//wicket
 function wicket() {
+
+    // Don't allow another wicket until new batsman comes
+    if (waitingForNewBatsman) {
+        alert("Select a new batsman first!");
+        return;
+    }
 
     wickets++;
 
@@ -128,28 +136,91 @@ function wicket() {
     if (striker === 0) {
 
         currentBatsman = batsman1;
+        batsman1Out = true;
 
     } else {
 
         currentBatsman = batsman2;
+        batsman2Out = true;
 
     }
 
 
+    // Ball faced by batsman
     currentBatsman.balls++;
 
 
-    // Change strike after wicket
-    // temporarily
-
-    changeStrike();
+    // New batsman required
+    waitingForNewBatsman = true;
 
 
-    if (legalBalls % 6 === 0) {
+    updateScoreboard();
+}
 
-        changeStrike();
+function addNewBatsman() {
+
+    if (!waitingForNewBatsman) {
+
+        alert("No wicket has occurred!");
+
+        return;
+    }
+
+
+    let name =
+        document.getElementById("newBatsman").value;
+
+
+    if (name === "") {
+
+        alert("Please select a batsman!");
+
+        return;
+    }
+
+
+    let newBatsman = {
+
+        name: name,
+
+        runs: 0,
+
+        balls: 0,
+
+        fours: 0,
+
+        sixes: 0
+
+    };
+
+
+    // Replace the dismissed batsman
+
+    if (batsman1Out) {
+
+        batsman1 = newBatsman;
+
+        batsman1Out = false;
+
+        striker = 0;
+
+    } else if (batsman2Out) {
+
+        batsman2 = newBatsman;
+
+        batsman2Out = false;
+
+        striker = 1;
 
     }
+
+
+    waitingForNewBatsman = false;
+
+
+    // Reset dropdown
+
+    document.getElementById("newBatsman").value = "";
 
 
     updateScoreboard();
