@@ -1,3 +1,10 @@
+let currentBowler = "Raj";
+
+let bowlerLegalBalls = 0;
+
+let waitingForBowler = false;
+
+
 let totalRuns = 0;
 let wickets = 0;
 
@@ -45,6 +52,7 @@ function addRuns(runs) {
     bowlerRuns += runs;
 
     legalBalls++;
+    bowlerLegalBalls++;
 
     // Get current striker
 
@@ -129,6 +137,7 @@ function wicket() {
     bowlerWickets++;
 
     legalBalls++;
+    bowlerLegalBalls++;
 
 
     let currentBatsman;
@@ -286,9 +295,12 @@ function updateScoreboard() {
     // Bowler
 
     document.getElementById("bowlerOvers").innerText =
-        Math.floor(legalBalls / 6) +
-        "." +
-        (legalBalls % 6);
+    Math.floor(bowlerLegalBalls / 6) +
+    "." +
+    (bowlerLegalBalls % 6);
+
+    document.getElementById("currentBowler").innerText =
+    currentBowler;
 
     document.getElementById("bowlerRuns").innerText =
         bowlerRuns;
@@ -328,16 +340,18 @@ function resetScore() {
     function wide() {
         totalRuns++;
         bowlerRuns++;       //Wide is not a legal ball then add a run in total runs
-    
+        updateScoreboard();
     }
 
     function NoBall() {
         totalRuns++;
         bowlerRuns++;       // no ball is not legal ball than add runs in total runs and bowler runs 
+        updateScoreboard();
     }
 
     function Bye(){
         legalBalls++;           //bye is a legal ball 
+        bowlerLegalBalls++;
         totalRuns++;
 
         if(legalBalls % 6 == 0 ) {      //if over is completed than change the strike 
@@ -347,12 +361,66 @@ function resetScore() {
 
     function legBye(){
         legalBalls++;
+        bowlerLegalBalls++;
         totalRuns++;
 
         if (legalBalls % 6 == 0){
             changeStrike();
         }
     }
+    
+    function checkOver() {
+
+    if (bowlerLegalBalls === 6) {
+
+        changeStrike();     // Change strike
+
+        waitingForBowler = true;    // Over completed
+
+        alert("Over completed! Select the next bowler.");
+
+    }
+
+}
+
+function changeBowler() {
+
+    if (!waitingForBowler) {
+
+        alert("The over is not completed yet!");
+
+        return;
+    }
+
+
+    let selectedBowler =
+        document.getElementById("newBowler").value;
+
+
+    if (selectedBowler === "") {
+
+        alert("Please select a bowler!");
+
+        return;
+    }
+
+
+    currentBowler = selectedBowler;
+
+    bowlerLegalBalls = 0;
+
+    bowlerRuns = 0;
+
+    bowlerWickets = 0;
+
+    waitingForBowler = false;
+
+
+    document.getElementById("newBowler").value = "";
+
+
+    updateScoreboard();
+}
 
 
     updateScoreboard();

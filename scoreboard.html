@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Scoring System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="scoreboard">
+
+    <h1>🏏 Cricket Scoring System</h1>
+
+    <div class="score">
+        <h2>Team A</h2>
+
+        <div id="teamScore">0 / 0</div>
+
+        <p>Overs: <span id="overs">0.0</span></p>
+    </div>
+
+
+    <!-- Batsmen -->
+
+    <div class="players">
+
+        <div class="player">
+            <h3 id="batsman1Name">Rahul</h3>
+
+            <p>
+                Runs: <span id="batsman1Runs">0</span>
+                (<span id="batsman1Balls">0</span>)
+            </p>
+
+            <p>
+                4s: <span id="batsman1Fours">0</span> |
+                6s: <span id="batsman1Sixes">0</span>
+            </p>
+        </div>
+
+
+        <div class="player">
+            <h3 id="batsman2Name">Amit</h3>
+
+            <p>
+                Runs: <span id="batsman2Runs">0</span>
+                (<span id="batsman2Balls">0</span>)
+            </p>
+
+            <p>
+                4s: <span id="batsman2Fours">0</span> |
+                6s: <span id="batsman2Sixes">0</span>
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- Current striker -->
+
+    <div class="striker">
+
+        <h3>
+            ⭐ Striker:
+            <span id="strikerName">Rahul</span>
+        </h3>
+
+    </div>
+
+
+    <!-- Information about Bowler -->
+
+    <div class="bowler">
+
+    <h3>
+        Bowler:
+        <span id="currentBowler">Raj</span>
+    </h3>
+
+    <p>
+        Overs: <span id="bowlerOvers">0.0</span> |
+        Runs: <span id="bowlerRuns">0</span> |
+        Wickets: <span id="bowlerWickets">0</span>
+    </p>
+
+</div>
+
+
+<div class="new-bowler">
+
+    <h2>Next Bowler</h2>
+
+    <select id="newBowler">
+
+        <option value="">Select Bowler</option>
+
+        <option value="Raj">Raj</option>
+        <option value="Vikram">Vikram</option>
+        <option value="Arjun">Arjun</option>
+        <option value="Rohan">Rohan</option>
+        <option value="Kunal">Kunal</option>
+
+    </select>
+
+    <button onclick="changeBowler()">
+        Change Bowler
+    </button>
+
+</div>
+
+    <!--  All Ball buttons to get runs or wicket and so on ... -->
+
+    <h2>Enter Ball Result</h2>
+
+    <div class="buttons">
+
+        <button onclick="addRuns(0)">0</button>
+        <button onclick="addRuns(1)">1</button>
+        <button onclick="addRuns(2)">2</button>
+        <button onclick="addRuns(3)">3</button>
+        <button onclick="addRuns(4)">4</button>
+        <button onclick="addRuns(6)">6</button>
+
+        <button onclick="wicket()">W</button>
+        <button onclick="wide()">WD</button>
+        <button onclick="Bye()">B</button>
+        <button onclick="NoBall()">NB</button>
+        <button onclick="legBye()">LB</button>
+
+    </div>
+
+    <div class="new-batsman">
+
+    <h2>New Batsman</h2>
+
+    <select id="newBatsman">
+
+        <option value="">Select batsman</option>
+
+        <option value="Vijay">Vijay</option>
+        <option value="Rohit">Rohit</option>
+        <option value="Suresh">Suresh</option>
+        <option value="Karan">Karan</option>
+        <option value="Mohit">Mohit</option>
+
+    </select>
+
+    <button onclick="addNewBatsman()">
+        Add Batsman
+    </button>
+
+</div>
+    <button class="reset" onclick="resetScore()">
+        Reset Match
+    </button>
+
+</div>
+
+  
+<script src="script.js"></script>     <!--to connect script.js to html -->
+
+</body>
+</html>

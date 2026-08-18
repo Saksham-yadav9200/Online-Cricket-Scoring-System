@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Match Lobby</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="lobby-container">
+
+    <h1>🏏 Match Lobby</h1>
+
+    <h2>
+        Match Code:
+        <span id="matchCode">CRIC-5821</span>
+    </h2>
+
+
+    <p>
+        Players can join using this match code.
+    </p>
+
+
+    <div class="teams">
+
+
+        <!-- Team A -->
+
+        <div class="team">
+
+            <h2>Team A</h2>
+
+            <div id="teamAPlayers">
+
+                <p>No players yet</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Team B -->
+
+        <div class="team">
+
+            <h2>Team B</h2>
+
+            <div id="teamBPlayers">
+
+                <p>No players yet</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Add Player -->
+
+    <div class="add-player">
+
+        <h2>Add Player</h2>
+
+        <input
+            type="text"
+            id="playerName"
+            placeholder="Player Name"
+        >
+
+
+        <select id="playerTeam">
+
+            <option value="A">
+                Team A
+            </option>
+
+            <option value="B">
+                Team B
+            </option>
+
+        </select>
+
+
+        <button onclick="addPlayer()">
+            Add Player
+        </button>
+
+    </div>
+
+
+    <button
+        class="start-match"
+        onclick="startMatch()">
+
+        🏏 Start Match
+
+    </button>
+
+</div>
+
+
+<script>
+
+let teamA = [];
+
+let teamB = [];
+
+
+function addPlayer() {
+
+    let name =
+        document.getElementById("playerName").value;
+
+
+    let team =
+        document.getElementById("playerTeam").value;
+
+
+    if (name === "") {
+
+        alert("Please enter player name!");
+
+        return;
+
+    }
+
+
+    if (team === "A") {
+
+        teamA.push(name);
+
+    } else {
+
+        teamB.push(name);
+
+    }
+
+
+    document.getElementById("playerName").value = "";
+
+    updatePlayers();
+
+}
+
+
+function updatePlayers() {
+
+
+    let teamAHTML = "";
+
+    let teamBHTML = "";
+
+
+    if (teamA.length === 0) {
+
+        teamAHTML = "<p>No players yet</p>";
+
+    } else {
+
+        teamA.forEach(function(player, index) {
+
+            teamAHTML +=
+                "<p>" +
+                (index + 1) +
+                ". " +
+                player +
+                "</p>";
+
+        });
+
+    }
+
+
+    if (teamB.length === 0) {
+
+        teamBHTML = "<p>No players yet</p>";
+
+    } else {
+
+        teamB.forEach(function(player, index) {
+
+            teamBHTML +=
+                "<p>" +
+                (index + 1) +
+                ". " +
+                player +
+                "</p>";
+
+        });
+
+    }
+
+
+    document.getElementById("teamAPlayers")
+        .innerHTML = teamAHTML;
+
+
+    document.getElementById("teamBPlayers")
+        .innerHTML = teamBHTML;
+
+}
+
+
+function startMatch() {
+
+    if (teamA.length < 1 ||
+        teamB.length < 1) {
+
+        alert(
+            "Both teams need at least one player!"
+        );
+
+        return;
+
+    }
+
+
+    alert("Match Started! 🏏");
+
+
+    window.location.href =
+        "scoreboard.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

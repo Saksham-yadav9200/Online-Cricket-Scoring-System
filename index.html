@@ -1,140 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Cricket Scoring System</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<div class="scoreboard">
+    <div class="home-container">
 
-    <h1>🏏 Cricket Scoring System</h1>
-
-    <div class="score">
-        <h2>Team A</h2>
-
-        <div id="teamScore">0 / 0</div>
-
-        <p>Overs: <span id="overs">0.0</span></p>
-    </div>
-
-
-    <!-- Batsmen -->
-
-    <div class="players">
-
-        <div class="player">
-            <h3 id="batsman1Name">Rahul</h3>
-
-            <p>
-                Runs: <span id="batsman1Runs">0</span>
-                (<span id="batsman1Balls">0</span>)
-            </p>
-
-            <p>
-                4s: <span id="batsman1Fours">0</span> |
-                6s: <span id="batsman1Sixes">0</span>
-            </p>
-        </div>
-
-
-        <div class="player">
-            <h3 id="batsman2Name">Amit</h3>
-
-            <p>
-                Runs: <span id="batsman2Runs">0</span>
-                (<span id="batsman2Balls">0</span>)
-            </p>
-
-            <p>
-                4s: <span id="batsman2Fours">0</span> |
-                6s: <span id="batsman2Sixes">0</span>
-            </p>
-        </div>
-
-    </div>
-
-
-    <!-- Current striker -->
-
-    <div class="striker">
-
-        <h3>
-            ⭐ Striker:
-            <span id="strikerName">Rahul</span>
-        </h3>
-
-    </div>
-
-
-    <!-- Information about Bowler -->
-
-    <div class="bowler">
-
-        <h3>Bowler: Raj</h3>
+        <h1>🏏 Cricket Scoring System</h1>
 
         <p>
-            Overs: <span id="bowlerOvers">0.0</span> |
-            Runs: <span id="bowlerRuns">0</span> |
-            Wickets: <span id="bowlerWickets">0</span>
+            Create a match or join an existing match
         </p>
 
+
+        <div class="home-buttons">
+
+            <button onclick="createMatch()">
+                ➕ Create Match
+            </button>
+
+
+            <button onclick="showJoinMatch()">
+                🔗 Join Match
+            </button>
+
+        </div>
+
+
+        <!-- Join Match Section -->
+
+        <div id="joinSection" class="join-section">
+
+            <h2>Join Match</h2>
+
+            <input
+                type="text"
+                id="matchCode"
+                placeholder="Enter Match Code"
+            >
+
+
+            <input
+                type="text"
+                id="playerName"
+                placeholder="Enter Your Name"
+            >
+
+
+            <button onclick="joinMatch()">
+                Join Match
+            </button>
+
+        </div>
+
+
+        <!-- Created Match -->
+
+        <div id="createdMatch"
+             class="created-match">
+
+            <h2>Match Created! 🎉</h2>
+
+            <p>Your Match Code:</p>
+
+            <h1 id="generatedCode"></h1>
+
+            <p>
+                Share this code with your players.
+            </p>
+
+        </div>
+
     </div>
 
 
-    <!--  All Ball buttons to get runs or wicket and so on ... -->
+    <script>
 
-    <h2>Enter Ball Result</h2>
+        function showJoinMatch() {
 
-    <div class="buttons">
+            document.getElementById("joinSection")
+                .style.display = "block";
 
-        <button onclick="addRuns(0)">0</button>
-        <button onclick="addRuns(1)">1</button>
-        <button onclick="addRuns(2)">2</button>
-        <button onclick="addRuns(3)">3</button>
-        <button onclick="addRuns(4)">4</button>
-        <button onclick="addRuns(6)">6</button>
+        }
 
-        <button onclick="wicket()">W</button>
-        <button onclick="wide()">WD</button>
-        <button onclick="Bye()">B</button>
-        <button onclick="NoBall()">NB</button>
-        <button onclick="legBye()">LB</button>
 
-    </div>
+        function createMatch() {
 
-    <div class="new-batsman">
+            let code =
+                "CRIC-" +
+                Math.floor(1000 + Math.random() * 9000);
 
-    <h2>New Batsman</h2>
 
-    <select id="newBatsman">
+            document.getElementById("generatedCode")
+                .innerText = code;
 
-        <option value="">Select batsman</option>
 
-        <option value="Vijay">Vijay</option>
-        <option value="Rohit">Rohit</option>
-        <option value="Suresh">Suresh</option>
-        <option value="Karan">Karan</option>
-        <option value="Mohit">Mohit</option>
+            document.getElementById("createdMatch")
+                .style.display = "block";
 
-    </select>
+        }
 
-    <button onclick="addNewBatsman()">
-        Add Batsman
-    </button>
 
-</div>
-    <button class="reset" onclick="resetScore()">
-        Reset Match
-    </button>
+        function joinMatch() {
 
-</div>
+            let code =
+                document.getElementById("matchCode").value;
 
-  
-<script src="script.js"></script>     <!--to connect script.js to html -->
+            let name =
+                document.getElementById("playerName").value;
+
+
+            if (code === "" || name === "") {
+
+                alert("Please enter Match Code and Name!");
+
+                return;
+
+            }
+
+
+            alert(
+                "Welcome " +
+                name +
+                "! You joined match " +
+                code
+            );
+
+        }
+
+    </script>
 
 </body>
+
 </html>
